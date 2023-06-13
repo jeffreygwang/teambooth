@@ -1,4 +1,4 @@
-# Teambooth: Distributed Fine-Tuning of Dreambooth Models
+# Teambooth: Distributed Fine-Tuning of Dreambooth Models with Raft
 
 ![](fig1.png)
 
