@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+service MessageService {
+  rpc RaftRequestVote(RaftRequestVoteRequest) returns (RaftRequestVoteResponse) {}
+  rpc RaftUpdateState(RaftUpdateStateRequest) returns (EmptyResponse) {}
+
+  rpc Merge(MergeRequest) returns (ModelResponse) {}
+  rpc Get(GetRequest) returns (ModelResponse) {}
+}
+
+message RaftRequestVoteRequest {
+  int32 term = 1;
+  string candidate_id = 2;
+}
+
+message RaftRequestVoteResponse {
+  bool vote = 1;
+}
+
+message RaftUpdateStateRequest {
+  string replica_id = 1;
+  bytes data = 2;
+}
+
+message MergeRequest {
+  string ckpt_diff_id = 1;
+}
+
+message GetRequest {
+}
+
+message ModelResponse {
+  bool success = 1;
+  string hosted_id = 2;
+}
+
+message EmptyResponse {
+  bool success = 1;
+}
